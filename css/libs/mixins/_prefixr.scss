@@ -1,0 +1,20 @@
+// ------------------------------------------------------------
+// /libs/mixins/_prefixr.scss
+// ------------------------------------------------------------
+//
+// ------------------------------------------------------------
+
+@mixin prefixr( $property, $value,
+                 $webkit: true,
+                    $moz: true,
+                     $ms: false,
+                      $o: false,
+                   	$rec: true ) {
+
+  @if $webkit { -webkit-#{$property}: $value; }
+  @if $moz    {    -moz-#{$property}: $value; }
+  @if $ms     {     -ms-#{$property}: $value; }
+  @if $o      {      -o-#{$property}: $value; }
+  @if $rec   	{         #{$property}: $value; }
+
+}

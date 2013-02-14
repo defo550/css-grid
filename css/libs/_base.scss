@@ -1,0 +1,74 @@
+// ------------------------------------------------------------
+// libs/_base.scss
+// ------------------------------------------------------------
+//
+// ------------------------------------------------------------
+
+html {
+	-webkit-text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%; 
+}
+
+body {
+  margin: 0 24px;
+
+  font: 100%/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+
+// headers
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+	margin: 0.67em 0 0;
+
+  font-size: 2em;
+}
+
+h2 {
+  margin: 0.83em 0 0;
+
+  font-size: 1.5em;
+}
+
+h3 {
+  margin: 1em 0 0;
+
+  font-size: 1.17em;
+}
+
+h4 {
+  margin: 1.33em 0;
+
+  font-size: 1em;
+}
+
+h5 {
+  margin: 1.67em 0;
+
+  font-size: 0.83em;
+}
+
+h6 {
+  margin: 2.33em 0;
+
+  font-size: 0.67em;
+}
+
+
+// horizontal row
+hr {
+    height: 0;
+    @include box-sizing( content-box );
+}
+
+
+// paragraphs
+p {
+	margin: 1em 0;
+}
+
+

@@ -1,0 +1,20 @@
+// ------------------------------------------------------------
+// /libs/mixins/_grid.scss
+// ------------------------------------------------------------
+// Description
+//	By specifiying the # of $cols, this mixin will generate all the grid classes
+//	up to the designated # specified (i.e. $cols) minus 1.
+//	
+//	Class name syntax: .span-[# of cols to span]-[$cols]
+// ------------------------------------------------------------
+
+
+@mixin grid-cols( $cols ){
+
+	@for $i from 1 through ($cols - 1) {
+		.span-#{$i}-#{$cols} {
+			width: ($i / $cols) * 100%;
+		}
+	}
+
+}

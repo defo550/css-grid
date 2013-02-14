@@ -1,0 +1,79 @@
+// ------------------------------------------------------------
+// css/libs/_grid.scss
+// ------------------------------------------------------------
+// Description
+//	Vary basic grid layout, used to split any space into fractions.  
+//	The grid controls width, any [span-[n]-[d]] can contain a row, module etc.
+//	The height of the grid is dictated by the content contained within the
+//	grid.
+// ------------------------------------------------------------
+//  Grid Class Structure
+//		-row: Groups [span-]'s together in a horizontal row.
+//		-[span-]: 
+//				- Base class that split's up a row into sections.  
+//				- .span-[n]-[d],  [n] and [d] represent the numerator and denominator, which is the franctional width of the [span-]. e.g. .span-1-2 would be 1 divided 2, which would 'span' 50% of it's parent 'row.'	
+// ------------------------------------------------------------
+
+$gutter: 24px !default;
+
+[class*="row"],
+[class*="span-"] {
+	@include box-sizing( border-box );
+}
+
+[class*="row"] {
+	&:after{
+		content: " ";
+		display: table;
+
+		clear: both;
+	}
+
+	> [class*="span-"] {
+		padding-left: $gutter;
+	}
+}
+
+.row {
+	margin-left: -($gutter);
+}
+
+.row-spacing {
+	margin-top: $gutter;
+	margin-bottom: $gutter;
+	
+	@extend .row;
+}
+
+.row-padding {
+	padding: $gutter $gutter $gutter 0;
+}
+
+
+// Base [span-] class
+[class*="span-"] {
+	float: left;
+}
+
+// manually define your [span-] classes 
+.span-full 	{ float: none; }
+.span-1-2 	{ width: 50%; }
+
+// use the custom col-width function to add specific % widths 
+.span-1-3 	{ width: col-width( $d: 3 ); }
+.span-2-3 	{ width: col-width( $d: 3, $n: 2 ); }
+
+// Use custom mixin to add grid classes 
+// divisibles of 4 
+@include grid-cols( 4 );
+
+// divisibles of 5 
+@include grid-cols( 5 );
+
+// divisibles of 6 
+@include grid-cols( 6 );
+
+// divisibles of 7 
+@include grid-cols( 7 );
+
+
