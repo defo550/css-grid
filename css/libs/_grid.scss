@@ -3,9 +3,6 @@
 // ------------------------------------------------------------
 // Description
 //	Vary basic grid layout, used to split any space into fractions.  
-//	The grid controls width, any [span-[n]-[d]] can contain a row, module etc.
-//	The height of the grid is dictated by the content contained within the
-//	grid.
 // ------------------------------------------------------------
 //  Grid Class Structure
 //		-row: Groups [span-]'s together in a horizontal row.
@@ -22,7 +19,9 @@ $gutter: 24px !default;
 }
 
 [class*="row"] {
-	&:after{
+	// Alternatively you can create a placeholder for your clearfix and just extend that here,
+	// that is typically what I do in my projects.  
+	&:after {
 		content: " ";
 		display: table;
 
