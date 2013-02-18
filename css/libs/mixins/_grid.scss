@@ -13,7 +13,7 @@
 
 	@for $i from 1 through ($cols - 1) {
 		.span-#{$i}-#{$cols} {
-			width: ($i / $cols) * 100%;
+			width: percentage($i / $cols);
 		}
 	}
 
