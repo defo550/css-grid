@@ -58,9 +58,9 @@ $gutter: 24px !default;
 .span-full 	{ float: none; }
 .span-1-2 	{ width: 50%; }
 
-// use the custom col-width function to add specific % widths 
-.span-1-3 	{ width: col-width( $d: 3 ); }
-.span-2-3 	{ width: col-width( $d: 3, $n: 2 ); }
+// or SASS's built in percentage function
+.span-1-3 	{ width: percentage( 1 / 3 ); }
+.span-2-3 	{ width: percentage( 2 / 3 ); }
 
 // Use custom mixin to add grid classes 
 // divisibles of 4 
