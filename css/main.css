@@ -18,7 +18,7 @@ body {
   margin: 0 24px;
   font: 100%/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
 
-/* headers */
+/* Headers */
 h1,
 h2,
 h3,
@@ -144,7 +144,7 @@ p {
 .span-3-4 {
   width: 75%; }
 
-/* divisibles of 5 */
+/* Divisibles of 5 */
 .span-1-5 {
   width: 20%; }
 
@@ -157,7 +157,7 @@ p {
 .span-4-5 {
   width: 80%; }
 
-/* divisibles of 6 */
+/* Divisibles of 6 */
 .span-1-6 {
   width: 16.66667%; }
 
@@ -173,7 +173,7 @@ p {
 .span-5-6 {
   width: 83.33333%; }
 
-/* divisibles of 7 */
+/* Divisibles of 7 */
 .span-1-7 {
   width: 14.28571%; }
 
