@@ -1,3 +1,16 @@
+/* -----------------------------------------------------------------------------
+   Extensions (Placeholders) - [file path]
+   -------------------------------------------------------------------------- */
+/**
+ * Extensions file is for defining placeholders that can extend rulesets
+ * throughout your project.
+ *
+ * For Example:
+ *
+ * %foo {
+ *   // declaration
+ * }
+ */
 .row, .row--spacing, .row--padding {
   zoom: 1; }
   .row:before, .row--spacing:before, .row--padding:before, .row:after, .row--spacing:after, .row--padding:after {

@@ -1,15 +1,17 @@
-// -----------------------------------------------------------------------------
-// Extensions (Placeholders)
-// -----------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
+   Extensions (Placeholders) - [file path]
+   -------------------------------------------------------------------------- */
 
-//  Extensions file is for defining placeholders that can extend rulesets
-//  throughout your project.
-//
-//  For Example:
-//
-//  %foo {
-//    // declaration
-//  }
+/**
+ * Extensions file is for defining placeholders that can extend rulesets
+ * throughout your project.
+ *
+ * For Example:
+ *
+ * %foo {
+ *   // declaration
+ * }
+ */
 
 %clearfix {
   zoom: 1;
