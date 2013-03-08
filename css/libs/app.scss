@@ -1,18 +1,21 @@
-// ------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // libs/app.scss
-// ------------------------------------------------------------
-// Description: 
-// 	Concatenate all sass files into main.css.
-//	Run sass --watch css/libs/app.scss:css/main.css 
-// ------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
+//  Concatenate all sass files into main.css.
+//  Run sass --watch css/libs/app.scss:css/main.css
 
 // mixins
+
 @import 'mixins/_prefixr.scss';
 @import 'mixins/_box.scss';
 @import 'mixins/_grid.scss';
 
+// Extensions
+
+@import 'extensions';
 
 // core files
+
 @import 'base';
 @import 'grid';
