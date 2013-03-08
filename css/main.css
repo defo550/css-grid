@@ -1,3 +1,12 @@
+.row, .row--spacing, .row--padding {
+  zoom: 1; }
+  .row:before, .row--spacing:before, .row--padding:before, .row:after, .row--spacing:after, .row--padding:after {
+    content: "";
+    display: table;
+    line-height: 0; }
+  .row:after, .row--spacing:after, .row--padding:after {
+    clear: both; }
+
 /* -----------------------------------------------------------------------------
    Base
    -------------------------------------------------------------------------- */
@@ -111,7 +120,7 @@ p {
 
 /** 
  * Alternativley you can use SASS's percentage function to generate the width
- * of your .span-('s).
+ * of your [span-] classes.
  */
 .span-1-3 {
   width: 33.33333%; }
@@ -120,7 +129,7 @@ p {
   width: 66.66667%; }
 
 /** 
- * Or use a custom mixin I created to generate any number of '.span-' 
+ * Or use a custom mixin I created to generate any number of [span-] 
  * classes on the fly.
  *
  * The mixin resides in the mixins directory in the _grid.scss file.
