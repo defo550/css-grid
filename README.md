@@ -7,7 +7,7 @@ A simple grid that I have used across multiple projects for the last year or so.
 
 ### Row
 
-    A `row` groups the columns (i.e. `span-` classes) together in a horizontal row, similar to how a table row works in tables.
+  A `row` groups the columns (i.e. `span-` classes) together in a horizontal row, similar to how a table row works in tables.
 
     ```html
 
@@ -26,7 +26,7 @@ A simple grid that I have used across multiple projects for the last year or so.
 
 ### Span's
 
-    The `span-` is the base class and is resposible for splitting a `row` into sections.
+  The `span-` is the base class and is resposible for splitting a `row` into sections.
 
     ```css
 
@@ -36,9 +36,8 @@ A simple grid that I have used across multiple projects for the last year or so.
 
 ### Span Dimensions
 
-    The span dimension represents the fractional width for the `span-` base class by providing a width rule.  Making it work similar to a table-cell.
+  The span dimension represents the fractional width for the `span-` base class by providing a width rule.  Making it work similar to a table-cell.
 
-    ```
     ```css
 
     .span-1-2 {
