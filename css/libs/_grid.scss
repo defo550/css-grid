@@ -21,7 +21,7 @@
 
 $gutter: 24px !default;
 
-[class*="row"],
+[class*="row-"],
 [class*="span-"] {
   @include box-sizing( border-box );
 }
