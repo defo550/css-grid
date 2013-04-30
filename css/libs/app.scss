@@ -1,21 +1,39 @@
-// -----------------------------------------------------------------------------
-// libs/app.scss
-// -----------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
+   CSS Grid
+   -------------------------------------------------------------------------- */
 
-//  Concatenate all sass files into main.css.
-//  Run sass --watch css/libs/app.scss:css/main.css
+/**
+ * CSS Grid is a lightweight/flexible grid that is built using SASS.
+ *
+ * author: Christopher DeFelice
+ * twitter: @defo550
+ *
+ * Copyright: Do as you like.
+ *
+ * Resources
+ * SASS - http://sass-lang.com/
+ */
+
+//
+// This file will concatenate all sass files into main.css.
+//
+// To track your changes in '.scss' files run this command at the command
+// line:
+// $ Run sass --watch css/libs/app.scss:css/main.css
+//
+// '*' indicates that this is a mandatory file for css-grid to work.  All files
+// not indicated with a '*' are completely optional.
+//
 
 // mixins
 
-@import 'mixins/_prefixr.scss';
-@import 'mixins/_box.scss';
-@import 'mixins/_grid.scss';
-
-// Extensions
-
-@import 'extensions';
+@import 'mixins/_prefixr.scss'; // *
+@import 'mixins/_box.scss'; // *
+@import 'mixins/_grid.scss'; // *
 
 // core files
 
 @import 'base';
-@import 'grid';
+
+@import 'extensions'; // *
+@import 'grid'; // *
