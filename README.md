@@ -13,6 +13,8 @@ A simple grid that I have used across multiple projects for the last year or so.
 
     <div class="row"></div>
 
+    ```
+
 ### Row Modfifiers
 
   - `row--spacing` will add top and bottom margin to your row.
@@ -24,6 +26,8 @@ A simple grid that I have used across multiple projects for the last year or so.
 
     <div class="row--padding"></div>
 
+    ```
+
 ### Span's
 
   The `span-` is the base class and is resposible for splitting a `row` into sections.
@@ -33,6 +37,8 @@ A simple grid that I have used across multiple projects for the last year or so.
     [span*="span-"] {
       float: left;
     }
+
+    ```
 
 ### Span Dimensions
 
@@ -47,3 +53,5 @@ A simple grid that I have used across multiple projects for the last year or so.
     .span-1-4 {
       width: 25%;
     }
+
+    ```
