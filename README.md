@@ -35,7 +35,7 @@ A simple grid that I have used across multiple projects for the last year or so.
   [span*="span-"] {
     float: left;
   }
-    ```
+  ```
 
 ### Span Dimensions
 
