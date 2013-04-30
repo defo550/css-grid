@@ -38,7 +38,7 @@ A simple grid that I have used across multiple projects for the last year or so.
 
     The span dimension represents the fractional width for the `span-` base class by providing a width rule.  Making it work similar to a table-cell.
 
-    ````
+    ```
     ```css
 
     .span-1-2 {
