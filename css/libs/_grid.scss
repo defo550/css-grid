@@ -88,18 +88,18 @@ $gutter: 24px !default;
 
 /* Divisibles of 4 */
 
-@include row-span( 4 );
+@include build-grid( 4 );
 
 /* Divisibles of 5 */
 
-@include row-span( 5 );
+@include build-grid( 5 );
 
 /* Divisibles of 6 */
 
-@include row-span( 6 );
+@include build-grid( 6 );
 
 /* Divisibles of 7 */
 
-@include row-span( 7 );
+@include build-grid( 7 );
 
 

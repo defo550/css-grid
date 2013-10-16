@@ -9,7 +9,7 @@
 //  Class name syntax: .span-[# to span]-[$spans]
 //
 
-@mixin row-span( $spans ) {
+@mixin build-grid( $spans ) {
 
   @for $i from 1 through ($spans - 1) {
     .span-#{$i}-#{$spans} {
