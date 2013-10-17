@@ -1,19 +1,46 @@
 // -----------------------------------------------------------------------------
-// Grid Mixin - /mixins/_grid.scss
+// CSS Grid mixin and functions
 // -----------------------------------------------------------------------------
 
-//
-//  By specifiying the # of $spans, this mixin will generate all the [span-] 
-//  classes up to the designated # specified (i.e. $spans) minus 1.
-//  
-//  Class name syntax: .span-[# to span]-[$spans]
-//
+// Function to calculate the Greatest Common Denominator.
 
-@mixin build-grid( $spans ) {
+@function gcd( $a, $b ){
+  @if $b == 0 {
+    @return $a;
+  }
+  @else {
+    @return gcd( $b, $a % $b );
+  }
+}
 
-  @for $i from 1 through ($spans - 1) {
-    .span-#{$i}-#{$spans} {
-      width: percentage( $i / $spans );
+// Percentage based mixin.
+
+// To use: pass a space separated list of numbers and an optional string to
+// to create a suffix.
+
+// Example:
+// @include build-grid( 2 4, --desktop );
+
+@mixin build-grid( $cell-units, $modifier: '' ) {
+
+  @each $var in  $cell-units {
+
+    @for $i from 1 through $var - 1 {
+
+      // Get greatest common denominator.
+      $gcd: gcd( $i, $var );
+      $x: $i / $gcd;
+
+      // Create our selector with a % width.
+      .cell-#{$i}-#{$var}#{$modifier} {
+
+        @if $x < $i {
+          @extend .cell-#{$x}-#{$var / $gcd}#{$modifier}
+        }
+        @else {
+         width: percentage( $i / $var );
+        }
+      }
     }
   }
 
