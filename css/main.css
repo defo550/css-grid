@@ -52,7 +52,7 @@ hr {
 p {
   margin: 1em 0; }
 
-section {
+.example {
   margin-bottom: 24px;
   padding: 10px;
   background-color: #e2e2e2; }
@@ -80,8 +80,7 @@ section {
 .grid, .grid--spacing, .grid--padding {
   display: block;
   margin: 0 0 0 -24px;
-  letter-spacing: -0.31em;
-  text-align: left; }
+  letter-spacing: -0.31em; }
 
 /* Cells
    -------------------------------------------------------------------------- */
@@ -91,7 +90,6 @@ section {
   margin: 0;
   padding: 0 0 0 24px;
   letter-spacing: normal;
-  text-align: left;
   vertical-align: top;
   word-spacing: normal; }
 

@@ -24,7 +24,6 @@
 // Grid Config
 // -----------------------------------------------------------------------------
 
-$grid-direction: left !default;
 $cell-gutter: 24px !default;
 
 
@@ -47,7 +46,6 @@ $cell-gutter: 24px !default;
   margin: 0 0 0 #{-$cell-gutter}; // 2
 
   letter-spacing: -0.31em; // 3
-  text-align: $grid-direction;
 }
 
 .grid {
@@ -69,7 +67,6 @@ $cell-gutter: 24px !default;
   padding: 0 0 0 $cell-gutter;
 
   letter-spacing: normal;
-  text-align: $grid-direction;
   vertical-align: top;
   word-spacing: normal;
 }
