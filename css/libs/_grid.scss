@@ -3,103 +3,127 @@
    -------------------------------------------------------------------------- */
 
 /**
- * Vary basic grid layout, used to split any space into fractions.
+ * Mobile first grid layout, used to split any space into fractions.  By default
+ * single column layout for mobile viewport sizes.
  *
  * Selector structure:
- *   .row: Groups [span-]'s together in a horizontal row.
- *   .span-[#]-[#]: Split's up a row into sections.
+ *   .grid: Groups [cell-]'s together in a horizontal grid.
+ *   .cell-[#]-[#]: Split's up a grid into sections.
  *
  * Example HTML:
  *
- * <div class="row">
- *   <div class="span-1-2"></div>
- *   <div class="span-1-2"></div>
+ * <div class="grid">
+ *   <div class="cell-1-2"></div>
+ *   <div class="cell-1-2"></div>
  * </div>
  */
 
-/* Set gutter width b/w .span-('s) */
+@import 'mixins/_grid.scss';
 
-$gutter: 24px !default;
 
-[class*="row-"],
-[class*="span-"] {
-  @include box-sizing( border-box );
+// Grid Config
+// -----------------------------------------------------------------------------
+
+$grid-direction: left !default;
+$cell-gutter: 24px !default;
+
+
+// Grid placeholders
+// -----------------------------------------------------------------------------
+
+/* Grid Container
+   -------------------------------------------------------------------------- */
+
+// 1. Create placeholder to extend %grid to other elements as your project
+// requires.  E.G. .header { @extend %grid; }.
+// 2. Pulls .grid to the left to compensate for the padding-left set on the 
+// [.cell-] sub-modules of the grid. 
+// 3. Will remove random white-space b/w child HTML elements that are set to
+// to 'display: inline-block.'
+
+%grid { // 1
+  display: block;
+
+  margin: 0 0 0 #{-$cell-gutter}; // 2
+
+  letter-spacing: -0.31em; // 3
+  text-align: $grid-direction;
 }
 
-/* Row container */
-
-.row {
-  @extend %clearfix;
-
-  margin-left: -($gutter);
+.grid {
+  @extend %grid;
 }
+
+
+/* Cells
+   -------------------------------------------------------------------------- */
+
+// Placeholder for cell components.
+// Can easily extend grid placeholder to sidebars, etc.
+
+%cell {
+  display: inline-block;
+
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 $cell-gutter;
+
+  letter-spacing: normal;
+  text-align: $grid-direction;
+  vertical-align: top;
+  word-spacing: normal;
+}
+
+[class*="cell-"] {
+  @extend %cell;
+}
+
 
 /* Row modifiers
    -------------------------------------------------------------------------- */
 
-.row--spacing {
-  margin-top: $gutter;
-  margin-bottom: $gutter;
-  
-  @extend .row;
+.grid--spacing {
+  @extend %grid;
+
+  margin-top: $cell-gutter;
+  margin-bottom: $cell-gutter;
 }
 
-.row--padding {
-  @extend %clearfix;
+.grid--padding {
+  @extend %grid;
 
-  padding: $gutter $gutter $gutter 0;
+  padding: $cell-gutter $cell-gutter $cell-gutter 0;
 }
 
-/**
- * Row .span-('s)
- *
- * Get all classes that have "span-" in the class attribute of an HTML element
- * and float it left and give it some padding.
- */
 
-[class*="span-"] {
-  float: left;
-
-  padding-left: $gutter;
-}
-
-/* Span dimensions
+/* Cell dimensions
    -------------------------------------------------------------------------- */
 
-/* You can manually define your [span-] classes */
-
-.span-full { float: none; }
-.span-1-2 { width: 50%; }
-
-/** 
- * Alternativley you can use SASS's percentage function to generate the width
- * of your [span-] classes.
- */
-
-.span-1-3 { width: percentage( 1 / 3 ); }
-.span-2-3 { width: percentage( 2 / 3 ); }
-
-/** 
- * Or use a custom mixin I created to generate any number of [span-] 
- * classes on the fly.
+/**
+ * Create percentage based cell dimensions with the build-grid mixin.  Pass an
+ * optional string argument (ie $modifier) to mixin to create special modifiers
+ * for various viewport dimensions.
  *
- * The mixin resides in the mixins directory in the _grid.scss file.
+ * Example:
+ * @include build-grid( 2 4, '--desktop' );
  */
 
-/* Divisibles of 4 */
+@media screen and ( min-width: 30em ) {
 
-@include build-grid( 4 );
+  /* Divisibles of 2 and 4 */
 
-/* Divisibles of 5 */
+  @include build-grid( 2 4, '--tablet' );
 
-@include build-grid( 5 );
+}
 
-/* Divisibles of 6 */
 
-@include build-grid( 6 );
+@media screen and ( min-width: 48em ) {
 
-/* Divisibles of 7 */
+  /* Divisibles of 2, 3, 4, 5, 6, 7, 8 */
 
-@include build-grid( 7 );
+  @include build-grid( 2 3 4 5 6 7 8, '--desktop' );
+
+}
+
 
 
