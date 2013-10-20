@@ -1,7 +1,7 @@
 # CSS Grid
 
 
-CSS Grid is a lightweight grid framework that is non-float based.  Utilizes [SASS](http://sass-lang.com/)'s (placeholder]([http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_) functionality to easiy extend and create your own selectors, modifiers, and sub-modules for your project needs.  CSS grid leverages the `inline-block` value for the `display` property.
+CSS Grid is a lightweight grid framework that is non-float based.  Utilizes [SASS](http://sass-lang.com/)'s [placeholder]([http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_) functionality to easiy extend and create your own selectors, modifiers, and sub-modules for your project needs.  CSS grid leverages the `inline-block` value for the `display` property.
 
 I like this approach for a couple of reasons:
  1. No clearfix required.
@@ -93,7 +93,7 @@ Example:
 ## Installation
 
 1. [Install SASS](http://sass-lang.com/install) v3.2.0 or greater.
-  - '''Note''': SASS has a Ruby dependency.
+  - **Note**: SASS has a Ruby dependency.
 2. clone repo: `git clone https://github.com/defo550/css-grid.git`
 
 
@@ -103,7 +103,7 @@ Example:
  3. Opera
  4. Safari
  5. IE 8+
-  - '''Note''': Should work in IE8, but I did no testinig in any version of IE.
+  - **Note**: Should work in IE8, but I did no testinig in any version of IE.
 
 ## License
 
