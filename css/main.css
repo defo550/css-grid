@@ -2,21 +2,27 @@
    CSS Grid
    -------------------------------------------------------------------------- */
 /**
- * CSS Grid is a lightweight/flexible grid that is built using SASS.
+ * CSS Grid is a lightweight grid framework that is non-float based.
+ * Utilizes SASS's placeholder (i.e. %) functionality to easiy extend and
+ * create your own selectors, modifiers, and sub-modules for your project
+ * needs.
  *
  * author: Christopher DeFelice
  * twitter: @defo550
  *
- * Copyright: Do as you like.
+ * Dependency:
+ *  SASS v3.2.0+
  *
- * Resources
- * SASS - http://sass-lang.com/
+ * License:
+ *  MIT license
+ *
+ * Track SASS changes (from Terminal or command prompt)
+ * $ Run sass --watch css/libs/app.scss:css/main.css
  */
 /* -----------------------------------------------------------------------------
    Base
    -------------------------------------------------------------------------- */
 * {
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
@@ -30,23 +36,12 @@ body {
 
 /* Headers */
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   margin: 0;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; }
 
 h1 {
   font-size: 2em; }
-
-/* Horizontal row */
-hr {
-  height: 0;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box; }
 
 /* Paragraphs */
 p {
@@ -58,59 +53,88 @@ p {
   background-color: #e2e2e2; }
 
 /* -----------------------------------------------------------------------------
-   Grid Layout - css/libs/_grid.scss
+   Grid
    -------------------------------------------------------------------------- */
 /**
- * Mobile first grid layout, used to split any space into fractions.  By default
- * single column layout for mobile viewport sizes.
+ * Base grid structure.
  *
- * Selector structure:
- *   .grid: Groups [cell-]'s together in a horizontal grid.
- *   .cell-[#]-[#]: Split's up a grid into sections.
+ * Placeholder structure:
+ *   %grid: Will %cell(s) together in a horizontal grid.
+ *   %cell: Split's up a %grid into sections.
  *
- * Example HTML:
- *
- * <div class="grid">
- *   <div class="cell-1-2"></div>
- *   <div class="cell-1-2"></div>
- * </div>
+ * Example extending placeholders:
+ *  .grid {
+ *    @extend %grid;
+ *  }
+ *  .cell {
+ *    @extend %cell;
+ *  }
  */
 /* Grid Container
    -------------------------------------------------------------------------- */
-.grid, .grid--spacing, .grid--padding {
+/**
+ * 1. Pulls %grid to the left to compensate for the padding-left set on the 
+ * %cell placeholder.
+ * 2. Will remove random white-space b/w child HTML elements that are set to
+ * 'display: inline-block.'
+ */
+.grid {
   display: block;
   margin: 0 0 0 -24px;
-  letter-spacing: -0.31em; }
+  /* 1 */
+  letter-spacing: -0.31em;
+  /* 2 */ }
 
-/* Cells
+/* Cell Module
    -------------------------------------------------------------------------- */
+/**
+ * Placeholder for cell components.
+ * Can easily extend grid placeholder to sidebars, etc.
+ * 
+ * 1. Key declaration for setting non-floated grid.
+ * 2. Set default width.
+ * 3. Create a gutter b/w each cell module.
+ * 4. Reset inherited text styles set in %grid.
+ * 5. Align content.
+ */
 [class*="cell-"] {
   display: inline-block;
+  /* 1 */
   width: 100%;
+  /* 2 */
   margin: 0;
   padding: 0 0 0 24px;
+  /* 3 */
   letter-spacing: normal;
+  /* 4 */
   vertical-align: top;
-  word-spacing: normal; }
+  /* 5 */ }
 
-/* Row modifiers
-   -------------------------------------------------------------------------- */
-.grid--spacing {
-  margin-top: 24px;
-  margin-bottom: 24px; }
-
-.grid--padding {
-  padding: 24px 24px 24px 0; }
-
+/**
+  * Example Grid modifiers by extending %grid.
+  *
+  * Example CSS:;
+  * .grid--spacing {
+  *   @extend %grid;
+  *   margin-top: $cell-gutter;
+  *   margin-bottom: $cell-gutter;
+  * }
+  *
+  * .grid--padding {
+  *   @extend %grid;
+  *   padding: $cell-gutter $cell-gutter $cell-gutter 0;
+  * }
+  *
+  * Example html:
+  *   <div class="grid--spacing"> // cells </div>
+  */
 /* Cell dimensions
    -------------------------------------------------------------------------- */
 /**
- * Create percentage based cell dimensions with the build-grid mixin.  Pass an
- * optional string argument (ie $modifier) to mixin to create special modifiers
- * for various viewport dimensions.
- *
+ * Create percentage based cell dimensions with the build-grid mixin.
+ * 
  * Example:
- * @include build-grid( 2 4, '--desktop' );
+ * @include build-grid( 'cell-', 2 4, '--desktop' );
  */
 @media screen and (min-width: 30em) {
   /* Divisibles of 2 and 4 */

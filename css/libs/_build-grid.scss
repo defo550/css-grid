@@ -20,8 +20,13 @@
 
 // Example:
 // @include build-grid( 2 4, --desktop );
+//
+// Takes 3 arguments:
+//  1. $prefix: create selector name
+//  2. Space separated list of numbers for cell dimensions.
+//  3. Optional suffix: create modifiers, etc.
 
-@mixin build-grid( $cell-units, $modifier: '' ) {
+@mixin build-grid( $prefix, $cell-units, $suffix: '' ) {
 
   @each $var in  $cell-units {
 
@@ -32,10 +37,10 @@
       $x: $i / $gcd;
 
       // Create our selector with a % width.
-      .cell-#{$i}-#{$var}#{$modifier} {
+      .#{$prefix}#{$i}-#{$var}#{$suffix} {
 
         @if $x < $i {
-          @extend .cell-#{$x}-#{$var / $gcd}#{$modifier}
+          @extend .#{$prefix}#{$x}-#{$var / $gcd}#{$suffix}
         }
         @else {
          width: percentage( $i / $var );

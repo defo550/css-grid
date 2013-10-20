@@ -3,36 +3,23 @@
    -------------------------------------------------------------------------- */
 
 /**
- * CSS Grid is a lightweight/flexible grid that is built using SASS.
+ * CSS Grid is a lightweight grid framework that is non-float based.
+ * Utilizes SASS's placeholder (i.e. %) functionality to easiy extend and
+ * create your own selectors, modifiers, and sub-modules for your project
+ * needs.
  *
  * author: Christopher DeFelice
  * twitter: @defo550
  *
- * Copyright: Do as you like.
+ * Dependency:
+ *  SASS v3.2.0+
  *
- * Resources
- * SASS - http://sass-lang.com/
+ * License:
+ *  MIT license
+ *
+ * Track SASS changes (from Terminal or command prompt)
+ * $ Run sass --watch css/libs/app.scss:css/main.css
  */
 
-//
-// This file will concatenate all sass files into main.css.
-//
-// To track your changes in '.scss' files run this command at the command
-// line:
-// $ Run sass --watch css/libs/app.scss:css/main.css
-//
-// '*' indicates that this is a mandatory file for css-grid to work.  All files
-// not indicated with a '*' are completely optional.
-//
-
-// mixins
-
-@import 'mixins/_prefixr.scss'; // *
-@import 'mixins/_box.scss'; // *
-
-// core files
-
 @import 'base';
-
-@import 'extensions'; // *
-@import 'grid'; // *
+@import 'grid';
