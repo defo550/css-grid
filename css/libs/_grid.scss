@@ -1,21 +1,24 @@
 /* -----------------------------------------------------------------------------
-   Grid Layout - css/libs/_grid.scss
+   Grid
    -------------------------------------------------------------------------- */
 
 /**
- * Mobile first grid layout, used to split any space into fractions.  By default
- * single column layout for mobile viewport sizes.
+ * Lightweight grid framework that is non-float based.
+ * Utilizes SASS's placeholder (i.e. %) functionality to easiy extend and
+ * create your own selectors, modifiers, and sub-modules for your project
+ * needs.
  *
- * Selector structure:
- *   .grid: Groups [cell-]'s together in a horizontal grid.
- *   .cell-[#]-[#]: Split's up a grid into sections.
+ * Placeholder structure:
+ *   %grid: Will %cell(s) together in a horizontal grid.
+ *   %cell: Split's up a %grid into sections.
  *
- * Example HTML:
- *
- * <div class="grid">
- *   <div class="cell-1-2"></div>
- *   <div class="cell-1-2"></div>
- * </div>
+ * Example extending placeholders:
+ *  .grid {
+ *    @extend %grid;
+ *  }
+ *  .cell {
+ *    @extend %cell;
+ *  }
  */
 
 @import 'mixins/_grid.scss';
@@ -25,91 +28,98 @@
 // -----------------------------------------------------------------------------
 
 $cell-gutter: 24px !default;
+$cell-module: 'cell-' !default; // Prefix for build-grid mixin.
 
-
-// Grid placeholders
-// -----------------------------------------------------------------------------
 
 /* Grid Container
    -------------------------------------------------------------------------- */
 
-// 1. Create placeholder to extend %grid to other elements as your project
-// requires.  E.G. .header { @extend %grid; }.
-// 2. Pulls .grid to the left to compensate for the padding-left set on the 
-// [.cell-] sub-modules of the grid. 
-// 3. Will remove random white-space b/w child HTML elements that are set to
-// to 'display: inline-block.'
+/**
+ * 1. Pulls %grid to the left to compensate for the padding-left set on the 
+ * %cell placeholder.
+ * 2. Will remove random white-space b/w child HTML elements that are set to
+ * 'display: inline-block.'
+ */
 
-%grid { // 1
+%grid {
   display: block;
 
-  margin: 0 0 0 #{-$cell-gutter}; // 2
+  margin: 0 0 0 #{-$cell-gutter}; /* 1 */
 
-  letter-spacing: -0.31em; // 3
+  letter-spacing: -0.31em; /* 2 */
 }
 
+// Example extending %grid.
 .grid {
   @extend %grid;
 }
 
 
-/* Cells
+/* Cell Module
    -------------------------------------------------------------------------- */
 
-// Placeholder for cell components.
-// Can easily extend grid placeholder to sidebars, etc.
+/**
+ * Placeholder for cell components.
+ * Can easily extend grid placeholder to sidebars, etc.
+ * 
+ * 1. Key declaration for setting non-floated grid.
+ * 2. Set default width.
+ * 3. Create a gutter b/w each cell module.
+ * 4. Reset inherited text styles set in %grid.
+ * 5. Align content.
+ */
 
 %cell {
-  display: inline-block;
+  display: inline-block; /* 1 */
 
-  width: 100%;
+  width: 100%; /* 2 */
   margin: 0;
-  padding: 0 0 0 $cell-gutter;
+  padding: 0 0 0 $cell-gutter; /* 3 */
 
-  letter-spacing: normal;
-  vertical-align: top;
-  word-spacing: normal;
+  letter-spacing: normal; /* 4 */
+  vertical-align: top; /* 5 */
 }
 
-[class*="cell-"] {
+// Example extending %cell.
+[class*="#{$cell-module}"] {
   @extend %cell;
 }
 
-
-/* Row modifiers
-   -------------------------------------------------------------------------- */
-
-.grid--spacing {
-  @extend %grid;
-
-  margin-top: $cell-gutter;
-  margin-bottom: $cell-gutter;
-}
-
-.grid--padding {
-  @extend %grid;
-
-  padding: $cell-gutter $cell-gutter $cell-gutter 0;
-}
+/**
+  * Example Grid modifiers by extending %grid.
+  *
+  * Example CSS:;
+  * .grid--spacing {
+  *   @extend %grid;
+  *   margin-top: $cell-gutter;
+  *   margin-bottom: $cell-gutter;
+  * }
+  *
+  * .grid--padding {
+  *   @extend %grid;
+  *   padding: $cell-gutter $cell-gutter $cell-gutter 0;
+  * }
+  *
+  * Example html:
+  *   <div class="grid--spacing"> // cells </div>
+  */
 
 
 /* Cell dimensions
    -------------------------------------------------------------------------- */
 
 /**
- * Create percentage based cell dimensions with the build-grid mixin.  Pass an
- * optional string argument (ie $modifier) to mixin to create special modifiers
- * for various viewport dimensions.
- *
+ * Create percentage based cell dimensions with the build-grid mixin.
+ * 
  * Example:
- * @include build-grid( 2 4, '--desktop' );
+ * @include build-grid( 'cell-', 2 4, '--desktop' );
  */
 
 @media screen and ( min-width: 30em ) {
 
   /* Divisibles of 2 and 4 */
 
-  @include build-grid( 2 4, '--tablet' );
+  @include build-grid( $cell-module, 2 4, '--tablet' );
 
 }
 
@@ -118,7 +128,7 @@ $cell-gutter: 24px !default;
 
   /* Divisibles of 2, 3, 4, 5, 6, 7, 8 */
 
-  @include build-grid( 2 3 4 5 6 7 8, '--desktop' );
+  @include build-grid( $cell-module, 2 3 4 5 6 7 8, '--desktop' );
 
 }
 
