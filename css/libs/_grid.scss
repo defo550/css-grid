@@ -43,7 +43,7 @@ $cell-module: 'cell-' !default; // Prefix for build-grid mixin.
 
   margin: 0 0 0 #{-$cell-gutter}; /* 1 */
 
-  letter-spacing: -0.31em; /* 2 */
+  font-size: 0;
 }
 
 // Example extending %grid.
@@ -73,6 +73,7 @@ $cell-module: 'cell-' !default; // Prefix for build-grid mixin.
   margin: 0;
   padding: 0 0 0 $cell-gutter; /* 3 */
 
+  font-size: 1rem;
   letter-spacing: normal; /* 4 */
   vertical-align: top; /* 5 */
 }
